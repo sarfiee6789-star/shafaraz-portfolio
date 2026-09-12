@@ -8,6 +8,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
 import './App.css'
+import heroPhoto from './assets/hero_photo.jpg'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -159,7 +160,7 @@ function App() {
   return (
     <div className="app-container" ref={container}>
       <motion.img 
-        src="/src/assets/hero_photo.jpg" 
+        src={heroPhoto} 
         alt="Shafaraz Khurshid Avatar" 
         className="cinematic-traveling-photo"
         style={{
