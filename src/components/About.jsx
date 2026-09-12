@@ -65,9 +65,9 @@ const About = () => {
             <a href="/Shafaraz_Khurshid_Resume.pdf" download="Shafaraz_Khurshid_Resume.pdf" className="btn interactive" style={{ marginTop: '2rem' }}>Download Resume</a>
           </div>
           
-          <div className="about-visuals" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <div className="about-visuals">
             {/* Placeholder for the traveling image */}
-            <div id="about-placeholder" style={{ width: '100%', height: '500px' }}></div>
+            <div id="about-placeholder"></div>
             <div className="about-stats glass">
               <div className="stats-box">
                 <h3 className="text-accent-gradient">MERN</h3>

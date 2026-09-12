@@ -7,6 +7,12 @@
   margin-bottom: 4rem;
 }
 
+.avatar-destination {
+  margin: 0 auto 4rem;
+  width: 150px;
+  height: 150px;
+}
+
 .projects-list {
   display: flex;
   flex-direction: column;
@@ -55,5 +61,18 @@
   .project-item:hover {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  .avatar-destination {
+    width: 100px;
+    height: 100px;
+  }
+  .project-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem 0;
+  }
+  .project-year {
+    font-size: 1rem;
   }
 }

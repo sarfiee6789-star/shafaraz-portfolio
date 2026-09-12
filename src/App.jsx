@@ -78,48 +78,67 @@ function App() {
   let p3 = metrics.about.top - dims.vh / 2 + metrics.about.height / 2;
   if (p3 <= p1) p3 = p1 + 200;
   
-  const p2 = p1 + (p3 - p1) / 2; // Mid-flight to About
+  // Use two points for mid-flight to allow it to shrink quickly and stay small while traveling
+  const p1_5 = p1 + (p3 - p1) * 0.15;
+  const p2_5 = p1 + (p3 - p1) * 0.85;
   
   let p4 = p3 + Math.max(200, metrics.about.height / 2); // Start leaving About
   
   let p6 = metrics.projects.top - dims.vh / 2 + metrics.projects.height / 2;
   if (p6 <= p4) p6 = p4 + 400; // Ensure enough scroll distance to animate smoothly
   
-  const p5 = p4 + (p6 - p4) / 2; // Mid-flight to Projects
+  const p4_5 = p4 + (p6 - p4) * 0.15;
+  const p5_5 = p4 + (p6 - p4) * 0.85;
   
   const p7 = p6 + 1000; // padding
 
-  const points = [p0, p1, p2, p3, p4, p5, p6, p7];
+  const points = [p0, p1, p1_5, p2_5, p3, p4, p4_5, p5_5, p6, p7];
 
   const top = useTransform(scrollY, points, [
     metrics.hero.top, 
     metrics.hero.top, 
-    metrics.hero.top + (metrics.about.top - metrics.hero.top) / 2, 
+    metrics.hero.top + (metrics.about.top - metrics.hero.top) * 0.15, 
+    metrics.hero.top + (metrics.about.top - metrics.hero.top) * 0.85, 
     metrics.about.top, 
     metrics.about.top, 
-    metrics.about.top + (metrics.projects.top - metrics.about.top) / 2, 
+    metrics.about.top + (metrics.projects.top - metrics.about.top) * 0.15, 
+    metrics.about.top + (metrics.projects.top - metrics.about.top) * 0.85, 
     metrics.projects.top,
     metrics.projects.top
   ]);
 
+  const isMobile = dims.vw < 768;
+  const midRadius = isMobile ? 50 : 75;
+  // On mobile, travel along the right side instead of the center
+  const mobileMidLeft = dims.vw - (midRadius * 2) - 20;
+  const desktopMidLeft = dims.vw / 2 - midRadius;
+  const midLeft = isMobile ? mobileMidLeft : desktopMidLeft;
+
   const left = useTransform(scrollY, points, [
     metrics.hero.left, 
     metrics.hero.left, 
-    dims.vw / 2 - 75, // Center as circle (75 is half of 150px)
+    midLeft, 
+    midLeft, 
     metrics.about.left, 
     metrics.about.left, 
-    dims.vw / 2 - 75, 
+    midLeft, 
+    midLeft, 
     metrics.projects.left,
     metrics.projects.left
   ]);
 
+  // Center mid-points adapt to screen size
+  const midSize = isMobile ? 100 : 150;
+  
   const width = useTransform(scrollY, points, [
     metrics.hero.width, 
     metrics.hero.width, 
-    150, 
+    midSize, 
+    midSize, 
     metrics.about.width, 
     metrics.about.width, 
-    150, 
+    midSize, 
+    midSize, 
     metrics.projects.width,
     metrics.projects.width
   ]);
@@ -127,10 +146,12 @@ function App() {
   const height = useTransform(scrollY, points, [
     metrics.hero.height, 
     metrics.hero.height, 
-    150, 
+    midSize, 
+    midSize, 
     metrics.about.height, 
     metrics.about.height, 
-    150, 
+    midSize, 
+    midSize, 
     metrics.projects.height,
     metrics.projects.height
   ]);
@@ -139,8 +160,10 @@ function App() {
     "20px", 
     "20px", 
     "50%", 
+    "50%", 
     "20px", 
     "20px", 
+    "50%", 
     "50%", 
     "50%",
     "50%"
@@ -150,8 +173,10 @@ function App() {
     "2px solid rgba(255,255,255,0.1)", 
     "2px solid rgba(255,255,255,0.1)", 
     "3px solid #ff3366", 
+    "3px solid #ff3366", 
     "1px solid rgba(255,255,255,0.1)", 
     "1px solid rgba(255,255,255,0.1)", 
+    "3px solid #ff3366", 
     "3px solid #ff3366", 
     "3px solid #ff3366",
     "3px solid #ff3366"

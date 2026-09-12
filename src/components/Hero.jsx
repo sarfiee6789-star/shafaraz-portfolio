@@ -68,7 +68,7 @@ const Hero = () => {
       <div className="shape shape-1"></div>
       <div className="shape shape-2"></div>
       
-      <div className="container hero-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className="container hero-content hero-flex-container">
         <div className="hero-text-container">
           <h1 className="hero-title">
             <div className="line-wrapper">
@@ -88,9 +88,9 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="hero-image-container" style={{ flex: '0 0 40%' }}>
+        <div className="hero-image-container">
           {/* Placeholder for the traveling image */}
-          <div id="hero-placeholder" style={{ width: '100%', height: '600px' }}></div>
+          <div id="hero-placeholder"></div>
         </div>
       </div>
     </section>

@@ -71,7 +71,7 @@ const Projects = () => {
         <h2 className="projects-title" style={{ textAlign: 'center' }}>Featured <span className="text-accent-gradient">Work</span></h2>
         
         {/* Docking Station for the floating avatar */}
-        <div className="avatar-destination" style={{ margin: '0 auto 4rem', width: '150px', height: '150px' }}></div>
+        <div className="avatar-destination"></div>
         
         <div className="projects-list">
           {projects.map((project) => (
