@@ -1,0 +1,59 @@
+.projects {
+  background-color: var(--bg-color);
+  padding-bottom: 8rem;
+}
+
+.projects-title {
+  margin-bottom: 4rem;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.project-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  transition: padding-left 0.4s ease, padding-right 0.4s ease;
+}
+
+.project-item:hover {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.project-info h3 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.project-item:hover .project-info h3 {
+  color: var(--accent-color);
+}
+
+.project-info p {
+  font-size: 1rem;
+  color: #888;
+}
+
+.project-year {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .project-item:hover {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
